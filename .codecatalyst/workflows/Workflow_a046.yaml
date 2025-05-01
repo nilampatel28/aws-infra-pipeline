@@ -1,0 +1,46 @@
+Name: Workflow_a046
+SchemaVersion: "1.0"
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: Push
+    Branches:
+      - main
+
+# Required - Define action configurations.
+Actions:
+  AWSCDKBootstrap_5d:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/cdk-bootstrap@v2.0.1
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: spandy-env
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Compute:
+      Type: EC2 # Defines the action's properties.
+    Configuration:
+      Region: us-west-2
+      CdkCliVersion: 2.1013.0
+  AWSCDKDeploy_d3:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/cdk-deploy@v2.0.2
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: spandy-env
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+    Compute:
+      Type: EC2 # Defines the action's properties.
+    Configuration:
+      StackName: CdkS3BucketStack
+      Region: us-west-2
+      CdkCliVersion: 2.1013.0
+    DependsOn:
+      - AWSCDKBootstrap_5d
