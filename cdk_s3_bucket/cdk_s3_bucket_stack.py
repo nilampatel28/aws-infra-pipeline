@@ -11,9 +11,9 @@ class CdkS3BucketStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         # Create an S3 bucket
-        bucket = s3.Bucket(self, "demo-cdk-code-catalyst-abhishek",  # Changed from XXXXXXXXXXXXX to a meaningful ID
+        bucket = s3.Bucket(self, "demo-cdk-code-catalyst-spandan",  # Changed from XXXXXXXXXXXXX to a meaningful ID
             # Optional configurations
-            bucket_name="testing-test-doc-bukall",  # Changed from XXXXXXXXXXXXX to a meaningful name
+            bucket_name="spandan13-testing-test-doc-bukall",  # Changed from XXXXXXXXXXXXX to a meaningful name
             versioned=True,  # Enable versioning
             encryption=s3.BucketEncryption.S3_MANAGED,  # Enable encryption
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,  # Block public access
